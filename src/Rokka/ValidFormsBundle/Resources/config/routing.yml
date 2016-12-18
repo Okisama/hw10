@@ -1,0 +1,3 @@
+rokka_valid_forms_homepage:
+    path:     /
+    defaults: { _controller: RokkaValidFormsBundle:Default:index }

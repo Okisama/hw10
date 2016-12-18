@@ -1,0 +1,7 @@
+rokka_valid_forms:
+    resource: "@RokkaValidFormsBundle/Resources/config/routing.yml"
+    prefix:   /
+
+app:
+    resource: "@AppBundle/Controller/"
+    type:     annotation
