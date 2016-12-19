@@ -7,3 +7,6 @@ site_newUser:
     defaults: { _controller: RokkaValidFormsBundle:Default:user }
 
 
+task_success:
+    path:     /success
+    defaults: { _controller: RokkaValidFormsBundle:Default:success }

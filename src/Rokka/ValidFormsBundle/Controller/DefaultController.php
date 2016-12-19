@@ -33,7 +33,7 @@ class DefaultController extends Controller
         $user->setPassword("Password");
         $user->setMail("my@mail.om");
         $user->setAdress("Cherkassy");
-        $user->setBorthday(date('01.01.2001',null));
+        $user->setBorthday(new \DateTime("11.11.1988"));
         $user->setAge(15);
         $user->setGender("male");
 
@@ -43,8 +43,8 @@ class DefaultController extends Controller
             ->add('Password', PasswordType::class)
             ->add('Firstname', TextType::class)
             ->add('Lastname', TextType::class)
-            ->add('Email', EmailType::class)
-            ->add('Sex', ChoiceType::class, array(
+            ->add('Mail', EmailType::class)
+            ->add('Gender', ChoiceType::class, array(
                 'choices'  => array(
                     'Male' => "male",
                     'Female' => "female",
@@ -69,7 +69,7 @@ class DefaultController extends Controller
         }
 
 
-        return $this->render('User/new.html.twig', array(
+        return $this->render('RokkaValidFormsBundle:User:new.html.twig', array(
             'form' => $form->createView(),
         ));
 
@@ -108,5 +108,10 @@ class DefaultController extends Controller
 
         return new Response('The post is valid! Yes!');
 
+    }
+
+    public function successAction()
+    {
+        return $this->render('RokkaValidFormsBundle:Default:success.html.twig');
     }
 }

@@ -10,7 +10,7 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 /**
  * @ORM\Entity
  * @ORM\Table(name="user")
- * @UniqueEntity("email")
+ * @UniqueEntity("mail")
  * @UniqueEntity("login")
  * @ORM\Entity(repositoryClass="Rokka\ValidFormsBundle\Repository\UserRepository")
  */
@@ -33,8 +33,8 @@ class User
      * @Ass\Length(
      *      min = 2,
      *      max = 100,
-     *      minMessage = "Your first name must be at least {{ limit }} characters long",
-     *      maxMessage = "Your first name cannot be longer than {{ limit }} characters"
+     *      minMessage = "Your логин name must be at least {{ limit }} characters long",
+     *      maxMessage = "Your login name cannot be longer than {{ limit }} characters"
      * )
      */
     private $login;
@@ -59,8 +59,8 @@ class User
      * @Ass\Length(
      *      min = 2,
      *      max = 100,
-     *      minMessage = "Your first name must be at least {{ limit }} characters long",
-     *      maxMessage = "Your first name cannot be longer than {{ limit }} characters"
+     *      minMessage = "Your last name must be at least {{ limit }} characters long",
+     *      maxMessage = "Your last name cannot be longer than {{ limit }} characters"
      * )
      */
     private $lastname;
@@ -85,8 +85,8 @@ class User
      * @Ass\Length(
      *      min = 8,
      *      max = 100,
-     *      minMessage = "Your first name must be at least {{ limit }} characters long",
-     *      maxMessage = "Your first name cannot be longer than {{ limit }} characters"
+     *      minMessage = "Your password  must be at least {{ limit }} characters long",
+     *      maxMessage = "Your password cannot be longer than {{ limit }} characters"
      * )
      */
     private $password;
@@ -322,14 +322,7 @@ class User
      */
     public function setAge($age)
     {
-        if (
-        $age == date("m.d.y") - $this->getBorthday())
-        {
-            $this->age = $age;
-        }
-        else {
-            $this->age = date("m.d.y") - $this->getBorthday();
-        }
+        $this->age = $age;
 
         return $this;
     }
