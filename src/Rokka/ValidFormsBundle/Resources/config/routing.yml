@@ -1,3 +1,9 @@
-rokka_valid_forms_homepage:
+site_homepage:
     path:     /
     defaults: { _controller: RokkaValidFormsBundle:Default:index }
+
+site_newUser:
+    path:      /user/new
+    defaults: { _controller: RokkaValidFormsBundle:Default:user }
+
+
