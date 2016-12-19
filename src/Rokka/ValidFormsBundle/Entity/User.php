@@ -348,7 +348,7 @@ class User
      */
     public function __construct()
     {
-        $this->post = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->post = new ArrayCollection();
     }
 
     /**
@@ -358,7 +358,7 @@ class User
      *
      * @return User
      */
-    public function addPost(\Rokka\ValidFormsBundle\Entity\Post $post)
+    public function addPost(Post $post)
     {
         $this->post[] = $post;
 
@@ -370,7 +370,7 @@ class User
      *
      * @param \Rokka\ValidFormsBundle\Entity\Post $post
      */
-    public function removePost(\Rokka\ValidFormsBundle\Entity\Post $post)
+    public function removePost(Post $post)
     {
         $this->post->removeElement($post);
     }
