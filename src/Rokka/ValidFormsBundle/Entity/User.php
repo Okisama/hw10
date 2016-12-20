@@ -96,11 +96,12 @@ class User
     private $adress;
     /**
      * @ORM\Column(type="date")
+     * @Ass\Date()
      */
     private $borthday;
     /**
      * @ORM\Column(type="decimal")
-     * @Ass\Date()
+     * @Ass\NotNull()
      */
     private $age;
 

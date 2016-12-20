@@ -2,7 +2,7 @@ site_homepage:
     path:     /
     defaults: { _controller: RokkaValidFormsBundle:Default:index }
 
-site_newUser:
+site_newuser:
     path:      /user/new
     defaults: { _controller: RokkaValidFormsBundle:Default:user }
 
@@ -10,3 +10,7 @@ site_newUser:
 task_success:
     path:     /success
     defaults: { _controller: RokkaValidFormsBundle:Default:success }
+
+site_newpost:
+    path:     /post/new
+    defaults: { _controller: RokkaValidFormsBundle:Default:post }

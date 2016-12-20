@@ -31,7 +31,7 @@ class DefaultController extends Controller
         $user->setFirstname("FirstName");
         $user->setLastname("Lastname");
         $user->setPassword("Password");
-        $user->setMail("my@mail.om");
+        $user->setMail("my@mail.com");
         $user->setAdress("Cherkassy");
         $user->setBorthday(new \DateTime("11.11.1988"));
         $user->setAge(15);
@@ -74,19 +74,6 @@ class DefaultController extends Controller
         ));
 
 
-       /* $validator = $this->get('validator');
-        $errors = $validator->validate($user);
-
-        if (count($errors) > 0) {
-
-            $errorsString = (string) $errors;
-
-            return $this->render('user/validation.html.twig', array(
-                'errors' => $errorsString,
-            ));
-        }
-
-        return new Response('The user is valid! Yes!');*/
     }
 
     public function postAction()
@@ -101,7 +88,7 @@ class DefaultController extends Controller
 
             $errorsString = (string) $errors;
 
-            return $this->render('post/validation.html.twig', array(
+            return $this->render('RokkaValidFormsBundle:post:validation.html.twig', array(
                 'errors' => $errorsString,
             ));
         }
