@@ -9,14 +9,61 @@
 
 
 <div class="container-fluid">
-    <h1 align="center">Write pretty post pliz</h1></div>
-<div class="container" align="center">
-    <div class="form-group">
-        {{ form_start(form) }}
-        {{ form_widget(form) }}
-        {{ form_end(form) }}
-    </div>
+    <h1 align="center">Write pretty post pliz</h1>
 </div>
+
+
+{{ form_start(form) }}
+    {{ form_errors(form) }}
+
+
+    <div class="row">
+        {#Тут мы выводим название поста#}
+        <div class="col-md-10 col-md-offset-4">
+        {{ form_label(form.caption) }}
+        {{ form_errors(form.caption) }}
+        {{ form_widget(form.caption) }}
+        </div>
+        <div class="col-md-10 col-md-offset-4">
+            {# Here short description rendered#}
+
+            {{ form_label(form.shortText) }}
+            {{ form_errors(form.shortText) }}
+            {{ form_widget(form.shortText) }}
+        </div>
+    </div>
+
+    <div class="row">
+       {#  Full text #}
+        <div class="col-md-10 col-md-offset-4">
+        {{ form_label(form.text) }}
+        {{ form_errors(form.text) }}
+        {{ form_widget(form.text) }}
+        </div>
+    </div>
+    <div class="row">
+        {#  Tag #}
+        <div class="col-md-10 col-md-offset-4">
+            {{ form_label(form.tag) }}
+            {{ form_errors(form.tag) }}
+            {{ form_widget(form.tag) }}
+        </div>
+
+
+    </div>
+
+    <div class="checkbox" align="center">
+        <label>
+            <input type="checkbox"> Check me out
+        </label>
+    </div>
+    <div class="container-fluid" align="center">
+
+            <button type="submit" class="btn btn-danger">Submit</button>
+        <p> </p>
+
+    </div>
+
 <div class="container-fluid" align="center">
     <a href="{{ path('site_homepage') }}" class="btn btn-primary btn-lg active" role="button">Home</a>
 </div>
