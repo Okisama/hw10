@@ -3,7 +3,7 @@
 namespace Rokka\ValidFormsBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use Symfony\Component\HttpFoundation\Response;
+//use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
 use Rokka\ValidFormsBundle\Entity\User;
 use Rokka\ValidFormsBundle\Entity\Post;
@@ -14,6 +14,7 @@ use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
+use Rokka\ValidFormsBundle\Form\NewPost;
 
 
 class DefaultController extends Controller
@@ -76,24 +77,33 @@ class DefaultController extends Controller
 
     }
 
-    public function postAction()
+    public function postAction(Request $request)
     {
 
         $post = new Post();
+        $post->setUser("Admin");
+        $post->setDate(new \DateTime('now'));
+        $form = $this->createForm(NewPost::class, $post);
 
-        $validator = $this->get('validator');
-        $errors = $validator->validate($post);
+        $form->handleRequest($request);
 
-        if (count($errors) > 0) {
+        if ($form->isSubmitted() && $form->isValid()) {
 
-            $errorsString = (string) $errors;
+            $post = $form->getData();
 
-            return $this->render('RokkaValidFormsBundle:post:validation.html.twig', array(
-                'errors' => $errorsString,
-            ));
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($post);
+            $em->flush();
+
+            return $this->redirectToRoute('task_success');
         }
 
-        return new Response('The post is valid! Yes!');
+
+        return $this->render('RokkaValidFormsBundle:post:new.html.twig', array(
+            'form' => $form->createView(),
+        ));
+
+
 
     }
 

@@ -7,13 +7,16 @@
 <!-- Latest compiled and minified JavaScript -->
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 
-<div class="container-fluid" align="center">Welcome</div>
 
-<div>
-    <div class="container" align="center">
-        <a href="{{ path('site_newuser') }}" class="btn btn-primary btn-lg active" role="button">New user</a>
-        <a href="{{ path('site_newpost') }}" class="btn btn-primary btn-lg active" role="button">New post</a>
+<div class="container-fluid">
+    <h1 align="center">Write pretty post pliz</h1></div>
+<div class="container" align="center">
+    <div class="form-group">
+        {{ form_start(form) }}
+        {{ form_widget(form) }}
+        {{ form_end(form) }}
     </div>
-
 </div>
-
+<div class="container-fluid" align="center">
+    <a href="{{ path('site_homepage') }}" class="btn btn-primary btn-lg active" role="button">Home</a>
+</div>
